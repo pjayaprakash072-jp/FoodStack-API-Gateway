@@ -8,7 +8,20 @@ const {initializeEventConsumer} = require('./src/events/eventConsumer');
 dotenv.config();
 const app = express();
 app.use(cors());
-
+app.get('/',(req,res)=>{
+    res.status(200).json(
+        {
+            message:"Welcome to FoodStack API Gateway!",
+            status:"Running",
+            services:[
+                "Auth service",
+                "Vendor service",
+                "User service",
+                "Manager service"
+            ]
+        }
+    )
+})
 app.use(createProxyMiddleware(
     {
         pathFilter:(path)=> path.startsWith("/vendorAuth") || path.startsWith("/userAuth") || path.startsWith("/managerAuth"),
