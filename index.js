@@ -56,7 +56,7 @@ const PORT = process.env.PORT || 5000;
 const startServer = async()=>{
     try {
         await initializeEventConsumer();
-        server.listen(PORT,()=>{
+        server.listen(PORT,"0.0.0.0",()=>{
             console.log(`API Gateway runnign on port :${PORT}`)
         })
     } catch (error) {
